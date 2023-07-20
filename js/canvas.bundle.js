@@ -770,11 +770,20 @@ addEventListener("keydown", function (_ref) {
 
     case 32:
       keys.space.pressed = !keys.space.pressed;
-      player.changePlayer();
-      player.jump = true;
+
+      if (!player.changedCharacter) {
+        player.changePlayer();
+        player.changedCharacter = true;
+        player.position.y -= 150; // player.jump = true;
+
+        console.log(player);
+        setTimeout(function () {// player.jump = false;
+        }, 400);
+      }
+
       setTimeout(function () {
-        player.jump = false;
-      }, 400);
+        player.changedCharacter = false;
+      }, 1000);
       break;
   }
 });
