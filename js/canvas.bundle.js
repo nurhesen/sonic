@@ -703,7 +703,7 @@ function animate() {
   enemies.forEach(function (enemy) {
     if (enemy.isActive) {
       if (Math.abs(player.position.x - enemy.position.x) < enemy.width / 2 + player.width / 2 && Math.abs(player.position.y - enemy.position.y) < enemy.height / 2 + player.height / 2) {
-        if (player.velocity.y > 0 || player.currentCharacter.name === "rhino" && player.position.x + player.currentCharacter.width * 0.6 < enemy.position.x && player.facingDirection === "right" && keys.right.pressed || player.currentCharacter.name === "rhino" && player.position.x - player.currentCharacter.width * 0.2 > enemy.position.x && player.facingDirection === "left" && keys.left.pressed // player.position.y < enemy.position.y &&
+        if (player.velocity.y > 0 || player.currentCharacter.name === "rhino" && player.position.x + player.currentCharacter.width * 0.6 < enemy.position.x && player.facingDirection === "right" || player.currentCharacter.name === "rhino" && player.position.x - player.currentCharacter.width * 0.2 > enemy.position.x && player.facingDirection === "left" // player.position.y < enemy.position.y &&
         // Math.abs(player.position.x - enemy.position.x) < enemy.width / 2
         ) {
             player.velocity.y = -player.currentCharacter.jumpHeight;
