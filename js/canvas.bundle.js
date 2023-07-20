@@ -703,22 +703,24 @@ function animate() {
   enemies.forEach(function (enemy) {
     if (enemy.isActive) {
       if (Math.abs(player.position.x - enemy.position.x) < enemy.width / 2 + player.width / 2 && Math.abs(player.position.y - enemy.position.y) < enemy.height / 2 + player.height / 2) {
-        if (player.position.y < enemy.position.y && Math.abs(player.position.x - enemy.position.x) < enemy.width / 2) {
-          player.velocity.y = -player.currentCharacter.jumpHeight;
-          player.isJumping = true;
-          player.currentSprite = player.sprites.jump.right; // enemy.update = () => {};
-          // enemy.position.y = -100;
+        if (player.velocity.y > 0 // player.position.y < enemy.position.y &&
+        // Math.abs(player.position.x - enemy.position.x) < enemy.width / 2
+        ) {
+            player.velocity.y = -player.currentCharacter.jumpHeight;
+            player.isJumping = true;
+            player.currentSprite = player.sprites.jump.right; // enemy.update = () => {};
+            // enemy.position.y = -100;
 
-          !player.playerList.includes(enemy.currentCharacter) && player.playerList.push(enemy.currentCharacter);
-          var index = enemies.indexOf(enemy);
-          console.log(enemy.currentCharacter.name);
-          Object(_menu__WEBPACK_IMPORTED_MODULE_10__["default"])().add(enemy.currentCharacter.name);
+            !player.playerList.includes(enemy.currentCharacter) && player.playerList.push(enemy.currentCharacter);
+            var index = enemies.indexOf(enemy);
+            console.log(enemy.currentCharacter.name);
+            Object(_menu__WEBPACK_IMPORTED_MODULE_10__["default"])().add(enemy.currentCharacter.name);
 
-          if (index > -1) {
-            // only splice array when item is found
-            enemies.splice(index, 1); // 2nd parameter means remove one item only
-          }
-        } else {
+            if (index > -1) {
+              // only splice array when item is found
+              enemies.splice(index, 1); // 2nd parameter means remove one item only
+            }
+          } else {
           init();
         }
       }
